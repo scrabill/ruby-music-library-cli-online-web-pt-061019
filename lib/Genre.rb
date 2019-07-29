@@ -1,10 +1,13 @@
 class Genre
   attr_accessor :name
 
+  extend Findable
+
   @@all = {}
 
   def initialize(name)
     @name = name
+    @songs = []
   end
 
   def self.create(name)
@@ -23,5 +26,21 @@ class Genre
 
   def save
     @@all << self
+  end
+
+  def songs
+    @songs
+  end
+
+  def artists
+
+    x = []
+
+    self.songs.each do |song|
+      x << song.artist
+    end
+
+    x.uniq
+
   end
 end
