@@ -1,5 +1,7 @@
 class Artist
-  attr_accessor :name
+  attr_accessor :name, :genre
+
+  extend Findable
 
   @@all = {}
 
@@ -39,4 +41,25 @@ class Artist
       @songs << song
     end
   end
+
+  def genres
+
+    x = []
+
+    self.songs.each do |song|
+      x << song.genre
+    end
+
+    x.uniq
+
+  end
+
+  def self.find_by_name(name)
+    self.all.find {|x| x.name == name}
+  end
+
+  def self.find_or_create_by_name(name)
+    self.find_by_name(name) || self.create(name)
+  end
+
 end
