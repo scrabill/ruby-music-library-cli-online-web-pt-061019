@@ -1,7 +1,7 @@
 class Genre
-  attr_accessor :name
+  attr_accessor :name, :song
 
-  extend Findable
+  extend Concerns::Findable
 
   @@all = {}
 

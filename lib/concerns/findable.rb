@@ -1,6 +1,3 @@
-require 'bundler'
-Bundler.require
-
 module Concerns
     # Module code here
 
@@ -17,5 +14,3 @@ module Concerns
       end
     end
 end
-
-require_all 'lib'

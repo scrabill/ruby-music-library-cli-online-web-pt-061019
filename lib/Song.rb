@@ -1,11 +1,14 @@
-require "pry"
+# require "pry"
 class Song
 
-  attr_accessor :name, :artist, :genre
+  attr_accessor :name
+  attr_reader :artist, :genre
+
+  extend Concerns::Findable
 
   @@all = []
 
-  def initialize(name, artist = nil, genre = nil)
+  def initialize (name, artist = nil, genre = nil)
     @name = name
     # @genre = genre
 
@@ -109,5 +112,37 @@ class Song
     #   Song.find_or_create_by_name("Kaohsiung Christmas")
     # end
   end
+
+  # def self.new_from_filename(filename)
+  #       # binding.pry
+  #       x = filename.gsub(".mp3","").split(" - ")
+  #       artist = x[0]
+  #       name = x[1]
+  #       genre = x[2]
+  #       song = Song.new(name)
+  #       song.name = name
+  #       song.genre = genre
+  #       song.artist = artist
+  #       song
+  #     end
+
+  def self.new_from_filename(filename)
+    x = filename.gsub(".mp3","").split(" - ")
+    artist = x[0]
+    name = x[1]
+    genre = x[2]
+    song = Song.new(name)
+    puts song
+    # song.name = name
+    # song.artist.name = artist
+    # song.genre.name = genre
+    # song
+
+    # expect(song.name).to eq("For Love I Come")
+    # expect(song.artist.name).to eq("Thundercat")
+    # expect(song.genre.name).to eq("dance")
+
+  end
+
 
 end
